@@ -1,21 +1,25 @@
 import { useState } from "react";
+
 import "./App.css";
 
 function App() {
-  const [item, setItem] = useState('');
-  const [todos, setTodos] = useState([])
+  const [item, setItem] = useState("");
+  const [todos, setTodos] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
     addTodo(item);
     setItem("");
-    
   }
 
   function addTodo(item) {
-    const currentTodos = [...todos, item ];
-    setTodos(currentTodos)
-    
+    const currentTodos = [...todos, item];
+    setTodos(currentTodos);
+  }
+
+  function deleteTodo(index) {
+    const newTodos = todos.filter((_, i) => i !== index);
+    setTodos(newTodos)
   }
   return (
     <>
@@ -33,11 +37,13 @@ function App() {
       <div className="list">
         <h1>Todos</h1>
         <ul>
-          {todos.map((item, index)=> ( <li key={index}>
-            <input type="checkbox" />
-            {item}
-          </li>))}
-         
+          {todos.map((item, index) => (
+            <li key={index}>
+              <input type="checkbox" />
+              {item}
+              <button onClick={() => deleteTodo(index)} className="dlt-btn">Delete</button>
+            </li>
+          ))}
         </ul>
       </div>
     </>
