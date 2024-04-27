@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Form from "./Form";
+import List from "./List";
 import "./App.css";
 
 function App() {
@@ -19,18 +20,8 @@ function App() {
   return (
     <>
       <Form addTodo={addTodo} />
-      <div className="list">
-        <h1>Todos</h1>
-        <ul>
-          {todos.map((item, index) => (
-            <li key={index}>
-              <input type="checkbox" />
-              {item}
-              <button onClick={() => deleteTodo(index)} className="dlt-btn">Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <List deleteTodo={deleteTodo} todos={todos}/>
+      
     </>
   );
 }
