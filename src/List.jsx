@@ -1,18 +1,20 @@
-function List({deleteTodo, todos}) {
+function List({ deleteTodo, todos }) {
   return (
     <>
       <div className="list">
         <h1>Todos</h1>
         <ul>
-          {todos.map((item, index) => (
-            <li key={index}>
-              <input type="checkbox" />
-              {item}
-              <button onClick={() => deleteTodo(index)} className="dlt-btn">
-                Delete
-              </button>
-            </li>
-          ))}
+          {todos.map((todo) => {
+            return (
+              <li key={todo.id}>
+                <input type="checkbox" />
+                <p>{todo.title}</p>
+                <button onClick={() => deleteTodo(todo.id)} className="dlt-btn">
+                  Delete
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>

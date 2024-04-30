@@ -9,18 +9,17 @@ function Form({ addTodo }) {
     setItem("");
   }
 
+  function handleChange(e) {
+    setItem(e.target.value);
+  }
 
   return (
     <>
       <div className="form">
         <h1>Nick's Todo</h1>
         <form id="form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={item}
-            onChange={(e) => setItem(e.target.value)}
-          />
-          <button className="add-btn">add item</button>
+          <input type="text" value={item} onChange={handleChange} />
+          <button className="add-btn" type="submit">add item</button>
         </form>
       </div>
     </>
