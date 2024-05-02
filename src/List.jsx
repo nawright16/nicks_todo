@@ -1,4 +1,9 @@
-function List({ deleteTodo, todos }) {
+
+
+function List({ deleteTodo, todos, handleEdit, handleEditChange, handleSave, editId, editText }) {
+  
+
+  
   return (
     <>
       <div className="list">
@@ -8,10 +13,28 @@ function List({ deleteTodo, todos }) {
             return (
               <li key={todo.id}>
                 <input type="checkbox" />
-                <p>{todo.title}</p>
-                <button onClick={() => deleteTodo(todo.id)} className="dlt-btn">
-                  Delete
-                </button>
+                {editId === todo.id ? (
+                  <input
+                    type="text"
+                    value={editText}
+                    onChange={handleEditChange}
+                  />
+                ) : (
+                  <p>{todo.title}</p>
+                )}
+                {editId === todo.id ? (
+                  <button onClick={() => handleSave(todo.id)}>Save</button>
+                ) : (
+                  <div>
+                    <button onClick={() => handleEdit(todo)}>Edit</button>
+                    <button
+                      onClick={() => deleteTodo(todo.id)}
+                      className="dlt-btn"
+                    >
+                      Delete
+                    </button>{" "}
+                  </div>
+                )}
               </li>
             );
           })}
