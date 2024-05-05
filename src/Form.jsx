@@ -19,7 +19,9 @@ function Form({ addTodo }) {
         <h1>Nick's Todo</h1>
         <form id="form" onSubmit={handleSubmit}>
           <input type="text" value={item} onChange={handleChange} />
-          <button className="add-btn" type="submit">add item</button>
+          <button className="add-btn" type="submit">
+            <span className="material-symbols-outlined">add_circle</span>
+          </button>
         </form>
       </div>
     </>

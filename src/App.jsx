@@ -11,8 +11,8 @@ function App() {
 
   function addTodo(title) {
     if (!title) return;
-    setTodos(todos => {
-      return [...todos, { id: uuidv4(), title}];
+    setTodos((todos) => {
+      return [...todos, { id: uuidv4(), title }];
     });
   }
 
@@ -31,21 +31,29 @@ function App() {
   }
 
   function handleSave(id) {
-    const newTodos = todos.map(todo =>{
-      if( todo.id === id){
-        return{...todo, title: editText};
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, title: editText };
       }
       return todo;
     });
     setTodos(newTodos);
     setEditId(null);
-    setEditText('');
+    setEditText("");
   }
 
   return (
     <>
       <Form addTodo={addTodo} />
-      <List deleteTodo={deleteTodo} todos={todos} handleEdit={handleEdit} handleEditChange={handleEditChange} handleSave={handleSave} editId={editId} editText={editText}/>
+      <List
+        deleteTodo={deleteTodo}
+        todos={todos}
+        handleEdit={handleEdit}
+        handleEditChange={handleEditChange}
+        handleSave={handleSave}
+        editId={editId}
+        editText={editText}
+      />
     </>
   );
 }

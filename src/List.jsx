@@ -1,9 +1,12 @@
-
-
-function List({ deleteTodo, todos, handleEdit, handleEditChange, handleSave, editId, editText }) {
-  
-
-  
+function List({
+  deleteTodo,
+  todos,
+  handleEdit,
+  handleEditChange,
+  handleSave,
+  editId,
+  editText,
+}) {
   return (
     <>
       <div className="list">
@@ -26,13 +29,17 @@ function List({ deleteTodo, todos, handleEdit, handleEditChange, handleSave, edi
                   <button onClick={() => handleSave(todo.id)}>Save</button>
                 ) : (
                   <div>
-                    <button onClick={() => handleEdit(todo)}>Edit</button>
+                    <button onClick={() => handleEdit(todo)}>
+                      <span className="material-symbols-outlined">edit</span>
+                    </button>
                     <button
                       onClick={() => deleteTodo(todo.id)}
                       className="dlt-btn"
                     >
-                      Delete
-                    </button>{" "}
+                      <span className="material-symbols-outlined">
+                        delete_forever
+                      </span>
+                    </button>
                   </div>
                 )}
               </li>
