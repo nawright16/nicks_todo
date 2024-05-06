@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
+import { Reorder } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 import Form from "./Form";
-import List from "./List";
-//import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState(() => {
@@ -16,8 +15,7 @@ function App() {
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
 
-  
-//This code updates local storage whenever a new task is entered
+  //This code updates local storage whenever a new task is entered
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -56,12 +54,53 @@ function App() {
     setEditText("");
   }
 
-  
-
   return (
     <>
       <Form addTodo={addTodo} />
-      <List
+      <div className="list">
+        <h1>Todos</h1>
+        <ul className="items">
+          <Reorder.Group values={todos} onReorder={setTodos}>
+            {todos.map((todo) => {
+              return (
+                <Reorder.Item key={todo.id} value={todo}>
+                  {editId === todo.id ? (
+                    <input
+                      type="text"
+                      value={editText}
+                      placeholder={todo.title}
+                      onChange={handleEditChange}
+                    />
+                  ) : (
+                    <p>{todo.title}</p>
+                  )}
+                  {editId === todo.id ? (
+                    <button onClick={() => handleSave(todo.id)}>Save</button>
+                  ) : (
+                    <div>
+                      <button onClick={() => handleEdit(todo)}>
+                        <span className="material-symbols-outlined">edit</span>
+                      </button>
+                      <button
+                        onClick={() => deleteTodo(todo.id)}
+                        className="dlt-btn"
+                      >
+                        <span class="material-symbols-outlined">recommend</span>
+                      </button>
+                    </div>
+                  )}
+                </Reorder.Item>
+              );
+            })}
+          </Reorder.Group>
+        </ul>
+      </div>
+    </>
+  );
+}
+
+{
+  /* <List
         deleteTodo={deleteTodo}
         todos={todos}
         handleEdit={handleEdit}
@@ -69,10 +108,10 @@ function App() {
         handleSave={handleSave}
         editId={editId}
         editText={editText}
+        onReorder={onReorder}
+        
        
-      />
-    </>
-  );
+      /> */
 }
 
 export default App;

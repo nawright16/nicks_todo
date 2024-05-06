@@ -1,38 +1,27 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:  Helvetica, sans-serif;
   line-height: 2.0;
   font-weight: 700;
-
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: auto;
   padding: 2rem;
   text-align: center;
+  display: block;
+  justify-content: center;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -46,12 +35,12 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
   padding: 0.3em 0.3em;
-  margin: 0.2em;
+  margin: 0.3em;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -59,26 +48,34 @@ button:hover {
   border-color: #646cff;
 }
 
+ul {
+  display: inline;
+  justify-content: center;
+  align-items: center;
+}
+
 li {
   list-style-type: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 300px;
   border: 1px solid #535bf2;
   padding: 0.3em 0.3em;
   margin: 0.2em;
   font-size: .75rem;
+  background-color: #535bf2;
 }
 
 li p {
   list-style-type: none;
-  display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 0.3em 0.3em;
   margin: 0.2em;
   font-size: 1rem;
+}
+
+li div {
+  margin-left: auto;
 }
 
 form {
@@ -87,15 +84,3 @@ form {
   align-items: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
