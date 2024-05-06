@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Form from "./Form";
 import List from "./List";
-import "./App.css";
+//import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const oldTodos = localStorage.getItem("todos");
+    if (oldTodos) {
+      return JSON.parse(oldTodos);
+    } else {
+      return [];
+    }
+  });
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
+
+  
+//This code updates local storage whenever a new task is entered
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     if (!title) return;
@@ -42,6 +56,8 @@ function App() {
     setEditText("");
   }
 
+  
+
   return (
     <>
       <Form addTodo={addTodo} />
@@ -53,6 +69,7 @@ function App() {
         handleSave={handleSave}
         editId={editId}
         editText={editText}
+       
       />
     </>
   );

@@ -6,7 +6,10 @@ function List({
   handleSave,
   editId,
   editText,
+ 
 }) {
+
+  
   return (
     <>
       <div className="list">
@@ -20,6 +23,7 @@ function List({
                   <input
                     type="text"
                     value={editText}
+                    placeholder={todo.title}
                     onChange={handleEditChange}
                   />
                 ) : (
@@ -40,6 +44,7 @@ function List({
                         delete_forever
                       </span>
                     </button>
+                    
                   </div>
                 )}
               </li>
