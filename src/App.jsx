@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Reorder } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 import Form from "./Form";
@@ -16,6 +16,14 @@ function App() {
   const [editText, setEditText] = useState("");
 
   //This code updates local storage whenever a new task is entered
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (editId && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [editId])
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -39,7 +47,9 @@ function App() {
   }
 
   function handleEditChange(e) {
+    
     setEditText(e.target.value);
+    console.log(editText)
   }
 
   function handleSave(id) {
@@ -54,6 +64,8 @@ function App() {
     setEditText("");
   }
 
+  
+
   return (
     <>
       <Form addTodo={addTodo} />
@@ -66,6 +78,7 @@ function App() {
                 <Reorder.Item key={todo.id} value={todo}>
                   {editId === todo.id ? (
                     <input
+                      ref={inputRef}
                       type="text"
                       value={editText}
                       placeholder={todo.title}
@@ -85,7 +98,7 @@ function App() {
                         onClick={() => deleteTodo(todo.id)}
                         className="dlt-btn"
                       >
-                        <span class="material-symbols-outlined">recommend</span>
+                        <span className="material-symbols-outlined">recommend</span>
                       </button>
                     </div>
                   )}
