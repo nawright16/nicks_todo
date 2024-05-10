@@ -43,7 +43,7 @@ function App() {
 
   function handleEdit(todo) {
     setEditId(todo.id);
-    setEditText(todo.text);
+    setEditText(todo.title);
   }
 
   function handleEditChange(e) {
