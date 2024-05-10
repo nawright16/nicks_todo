@@ -1,6 +1,6 @@
 :root {
-  font-family:  Helvetica, sans-serif;
-  line-height: 2.0;
+  font-family: Helvetica, sans-serif;
+  line-height: 2;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -14,8 +14,6 @@
   display: block;
   justify-content: center;
 }
-
-
 
 body {
   margin: 0;
@@ -42,7 +40,11 @@ h1 {
   line-height: 2.1;
   border-radius: 8px;
   width: 16rem;
-  }
+}
+
+#drag-icon {
+  cursor: grab;
+}
 
 button {
   border-radius: 8px;
@@ -50,13 +52,14 @@ button {
   display: inline-flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 0.3em 0.3em;
+  padding: 0.23em;
   margin: 0.3em;
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
@@ -70,20 +73,19 @@ ul {
 li {
   list-style-type: none;
   display: flex;
-  width: 300px;
-  border: 1px solid #535bf2;
-  padding: 0.3em 0.3em;
+  align-items: center;
+  width: 400px;
+  padding: 0.2em;
   margin: 0.2em;
-  font-size: .75rem;
+  font-size: 0.75rem;
+
   background-color: #535bf2;
 }
 
 li p {
   list-style-type: none;
-  justify-content: center;
-  align-items: center;
   padding: 0.3em 0.3em;
-  margin: 0.2em;
+  margin-left: auto;
   font-size: 1rem;
 }
 
@@ -96,4 +98,3 @@ form {
   justify-content: center;
   align-items: center;
 }
-

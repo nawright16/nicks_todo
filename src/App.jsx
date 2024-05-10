@@ -21,9 +21,9 @@ function App() {
 
   useEffect(() => {
     if (editId && inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus();
     }
-  }, [editId])
+  }, [editId]);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -47,9 +47,8 @@ function App() {
   }
 
   function handleEditChange(e) {
-    
     setEditText(e.target.value);
-    console.log(editText)
+    console.log(editText);
   }
 
   function handleSave(id) {
@@ -64,8 +63,8 @@ function App() {
     setEditText("");
   }
 
-  function handleKeyDown(e, id){
-    if (e.key === 'Enter') {
+  function handleKeyDown(e, id) {
+    if (e.key === "Enter") {
       handleSave(id);
     }
   }
@@ -80,6 +79,9 @@ function App() {
             {todos.map((todo) => {
               return (
                 <Reorder.Item key={todo.id} value={todo}>
+                  <span id="drag-icon" className="material-symbols-outlined">
+                    drag_indicator
+                  </span>
                   {editId === todo.id ? (
                     <input
                       ref={inputRef}
@@ -93,9 +95,9 @@ function App() {
                     <p>{todo.title}</p>
                   )}
                   {editId === todo.id ? (
-                    <button onClick={() => handleSave(todo.id)}><span className="material-symbols-outlined">
-                    star
-                    </span></button>
+                    <button onClick={() => handleSave(todo.id)}>
+                      <span className="material-symbols-outlined">star</span>
+                    </button>
                   ) : (
                     <div>
                       <button onClick={() => handleEdit(todo)}>
@@ -105,7 +107,9 @@ function App() {
                         onClick={() => deleteTodo(todo.id)}
                         className="dlt-btn"
                       >
-                        <span className="material-symbols-outlined">recommend</span>
+                        <span className="material-symbols-outlined">
+                          recommend
+                        </span>
                       </button>
                     </div>
                   )}
