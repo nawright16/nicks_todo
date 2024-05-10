@@ -29,7 +29,20 @@ body {
 h1 {
   font-size: 3em;
   line-height: 0.75;
+  -webkit-text-stroke: 1px #646cff;
 }
+
+#form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form input {
+  line-height: 2.1;
+  border-radius: 8px;
+  width: 16rem;
+  }
 
 button {
   border-radius: 8px;

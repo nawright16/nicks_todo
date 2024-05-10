@@ -64,7 +64,11 @@ function App() {
     setEditText("");
   }
 
-  
+  function handleKeyDown(e, id){
+    if (e.key === 'Enter') {
+      handleSave(id);
+    }
+  }
 
   return (
     <>
@@ -83,12 +87,15 @@ function App() {
                       value={editText}
                       placeholder={todo.title}
                       onChange={handleEditChange}
+                      onKeyDown={(e) => handleKeyDown(e, todo.id)}
                     />
                   ) : (
                     <p>{todo.title}</p>
                   )}
                   {editId === todo.id ? (
-                    <button onClick={() => handleSave(todo.id)}>Save</button>
+                    <button onClick={() => handleSave(todo.id)}><span className="material-symbols-outlined">
+                    star
+                    </span></button>
                   ) : (
                     <div>
                       <button onClick={() => handleEdit(todo)}>
