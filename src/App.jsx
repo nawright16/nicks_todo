@@ -99,7 +99,7 @@ function App() {
                       <span className="material-symbols-outlined">star</span>
                     </button>
                   ) : (
-                    <div>
+                    <div id="btns">
                       <button onClick={() => handleEdit(todo)}>
                         <span className="material-symbols-outlined">edit</span>
                       </button>
